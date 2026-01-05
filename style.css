@@ -1,193 +1,63 @@
-:root {
-    --primary: #6366f1;
-    --dark: #0f172a;
-    --light: #f8fafc;
-    --card: #ffffff;
-}
-
-/* Reset */
-* {
+*{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+body{
+    background: #0a4949;
+    text-align: center;
 
-body {
-    background: var(--light);
-    color: var(--dark);
 }
-
-/* Header */
-.header {
-    position: sticky;
-    top: 0;
-    background: white;
+.container{
+    height: 70vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    z-index: 100;
-}
-
-.logo {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--primary);
-}
-
-.nav a {
-    margin-left: 1.5rem;
-    text-decoration: none;
-    color: var(--dark);
-    font-weight: 500;
-    position: relative;
-}
-
-.nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 2px;
-    background: var(--primary);
-    transition: width 0.3s;
-}
-
-.nav a:hover::after {
-    width: 100%;
-}
-
-/* Hero */
-.hero {
-    min-height: 80vh;
-    background: linear-gradient(135deg, #6366f1, #818cf8);
-    color: white;
-    display: flex;
-    flex-direction: column;
+   
     justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 2rem;
 }
-
-.hero h1 {
-    font-size: 3rem;
-    animation: slideUp 1s ease forwards;
+.game{
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+    gap: 1.5vmin;
 }
-
-.hero p {
-    margin: 1rem 0 2rem;
-    font-size: 1.2rem;
-    max-width: 500px;
-}
-
-.cta-btn {
-    padding: 0.9rem 2rem;
+.box{
+    height: 18vmin;
+    width: 18vmin;
+    border-radius: 1rem;
     border: none;
-    background: white;
-    color: var(--primary);
-    border-radius: 30px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+    font-size: 8vmin;
+    color: red;
 }
-
-.cta-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+#resetbutton{
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #0b0b0b;
+    color: aliceblue;
+    border-radius: 1rem;
+    border: none;
 }
-
-/* Features */
-.features {
-    padding: 4rem 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+#newbutton{
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #0b0b0b;
+    color: aliceblue;
+    border-radius: 1rem;
+    border: none;
 }
-
-.feature-card {
-    background: var(--card);
-    padding: 2rem;
-    width: 260px;
-    border-radius: 12px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+#msg{
+    color: beige;
+    font-size: 8vmin;
 }
-
-.feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+.msg-container{
+    height: 90vmin;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
-/* Pricing */
-.pricing {
-    padding: 4rem 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.price-card {
-    background: var(--card);
-    padding: 2rem;
-    width: 240px;
-    border-radius: 12px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.price-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
-
-.price {
-    font-size: 1.6rem;
-    color: var(--primary);
-    margin: 1rem 0;
-}
-
-.popular {
-    border: 2px solid var(--primary);
-}
-
-/* Footer */
-.footer {
-    background: var(--dark);
-    color: white;
-    text-align: center;
-    padding: 2rem;
-    margin-top: 2rem;
-}
-
-/* Animation */
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .features,
-    .pricing {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero h1 {
-        font-size: 2.2rem;
-    }
+.hide{
+    display: none;
 }
