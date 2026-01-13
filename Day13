@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int mx = *max_element(piles.begin(), piles.end());
+        int k = mx;
+        int low = 1;
+        
+        
+        while(low<=mx){
+            int mid=(mx+low)/2;
+            long long sum=0;
+            for(int i :piles){
+                sum = sum+(i+mid-1)/mid;
+            }
+            if(sum<=h){
+                k=mid;
+                mx=mid-1;
+                
+            }
+            else{
+            low=mid+1;
+            }
+        }
+         return k;
+    }
+};
