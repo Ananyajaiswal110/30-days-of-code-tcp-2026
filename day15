@@ -1,0 +1,36 @@
+class Solution {
+public:
+    // Helper function to find Least Common Multiple
+    long long lcm(long long a, long long b) {
+        return (a * b) / std::gcd(a, b);
+    }
+
+    int nthUglyNumber(int n, int a, int b, int c) {
+        long long low = 1, high = 2e9; // Range for binary search
+        
+        long long ab = lcm(a, b);
+        long long bc = lcm(b, c);
+        long long ac = lcm(a, c);
+        long long abc = lcm(a, bc);
+
+        long long ans = high;
+
+        while (low <= high) {
+            long long mid = low + (high - low) / 2;
+            
+            // Inclusion-Exclusion Formula
+            long long count = mid/a + mid/b + mid/c 
+                            - mid/ab - mid/bc - mid/ac 
+                            + mid/abc;
+
+            if (count >= n) {
+                ans = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        
+        return (int)ans;
+    }
+};
