@@ -1,0 +1,51 @@
+class Solution {
+public:
+    vector<vector<string>> solveNQueens(int n) {
+        vector<vector<string>> results;
+        vector<string> board(n, string(n, '.'));
+        
+        // Sets to keep track of under-attack zones
+        unordered_set<int> cols;
+        unordered_set<int> diagonals;      // row - col
+        unordered_set<int> antiDiagonals;  // row + col
+        
+        backtrack(0, n, board, results, cols, diagonals, antiDiagonals);
+        return results;
+    }
+
+private:
+    void backtrack(int row, int n, vector<string>& board, vector<vector<string>>& results,
+                   unordered_set<int>& cols, unordered_set<int>& diagonals, unordered_set<int>& antiDiagonals) {
+        
+        // Base case: All queens placed
+        if (row == n) {
+            results.push_back(board);
+            return;
+        }
+
+        for (int col = 0; col < n; col++) {
+            int currDiag = row - col;
+            int currAntiDiag = row + col;
+
+            // If the column or diagonals are already occupied, skip
+            if (cols.count(col) || diagonals.count(currDiag) || antiDiagonals.count(currAntiDiag)) {
+                continue;
+            }
+
+            // Place queen
+            board[row][col] = 'Q';
+            cols.insert(col);
+            diagonals.insert(currDiag);
+            antiDiagonals.insert(currAntiDiag);
+
+            // Move to next row
+            backtrack(row + 1, n, board, results, cols, diagonals, antiDiagonals);
+
+            // Backtrack: remove queen and clear sets
+            board[row][col] = '.';
+            cols.erase(col);
+            diagonals.erase(currDiag);
+            antiDiagonals.erase(currAntiDiag);
+        }
+    }
+};
