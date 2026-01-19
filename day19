@@ -1,0 +1,45 @@
+class Solution {
+  public:
+   
+         Node* reversell(Node* head){
+        Node* prev=nullptr;
+        Node* curr=head;
+        
+        // Your Code here
+        
+        while(curr!=nullptr){
+            Node* next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+        }
+             return prev;
+         }
+           Node* addOne(Node* head){
+              head=reversell( head);
+             int carry=1;
+              Node* temp=head;
+              while(temp!=nullptr && carry){
+              int sum=carry;
+              
+                   sum=temp->data+carry;
+                   temp->data=sum%10;
+                   
+                     carry=sum/10;
+               if(temp->next==nullptr && carry){
+                   temp->next=new Node(carry);
+                   carry=0;
+               }
+               temp=temp->next;
+              
+              
+              }
+              return reversell(head);
+              
+              
+              
+          }
+         
+       
+    
+};
