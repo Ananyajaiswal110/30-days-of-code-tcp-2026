@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        stack<int> s;
+        unordered_map<int, int> next_greater;
+        
+        // Process nums2 to find the next greater element for every number
+        for (int num : nums2) {
+            // While the current number is greater than the stack's top,
+            // it is the "next greater" for that top element.
+            while (!s.empty() && s.top() < num) {
+                next_greater[s.top()] = num;
+                s.pop();
+            }
+            s.push(num);
+        }
+        
+        // Build the result for nums1
+        vector<int> result;
+        for (int num : nums1) {
+            if (next_greater.count(num)) {
+                result.push_back(next_greater[num]);
+            } else {
+                result.push_back(-1); // No greater element found
+            }
+        }
+        
+        return result;
+    }
+};
