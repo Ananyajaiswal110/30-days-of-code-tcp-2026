@@ -1,0 +1,32 @@
+void solve(TreeNode* root, vector<int> &in, vector<int> &pre, vector<int> &post) {
+    if (root == nullptr) {
+        return;
+    }
+
+    // 1. Pre-order: Root, Left, Right
+    pre.push_back(root->data);
+    
+    solve(root->left, in, pre, post);
+    
+    // 2. In-order: Left, Root, Right
+    in.push_back(root->data);
+    
+    solve(root->right, in, pre, post);
+    
+    // 3. Post-order: Left, Right, Root
+    post.push_back(root->data);
+}
+
+vector<vector<int>> getTreeTraversal(TreeNode *root) {
+    vector<int> inorder, preorder, postorder;
+    
+    solve(root, inorder, preorder, postorder);
+    
+    // Returning a 2D vector containing all three results
+    vector<vector<int>> result;
+    result.push_back(inorder);
+    result.push_back(preorder);
+    result.push_back(postorder);
+    
+    return result;
+}
